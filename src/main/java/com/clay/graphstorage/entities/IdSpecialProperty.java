@@ -1,5 +1,8 @@
 package com.clay.graphstorage.entities;
 
+/**
+ * This {@link SpecialProperty} can be used to auto assign id to nodes.
+ * */
 public class IdSpecialProperty extends SpecialProperty<Long> {
 
 

@@ -2,6 +2,9 @@ package com.clay.graphstorage.entities;
 
 import lombok.ToString;
 
+/**
+ * Each graph has certain nodes, and each node can have properties holding values of their own.
+ * */
 @ToString
 public class NodeProperty<T> {
   

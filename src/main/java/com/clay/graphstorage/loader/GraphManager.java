@@ -5,7 +5,10 @@ import java.lang.reflect.InvocationTargetException;
 
 import com.clay.graphstorage.converter.GraphOutput;
 import com.clay.graphstorage.converter.GraphParser;
-
+/**
+ * @author Anurag
+ * This singleton class is responsible for availability of {@link GraphParser} and {@link GraphOutput} depending on class path and configuration specification given by {@link GraphSourceConfig} and {@link GraphOutputConfig}.
+ * */
 public class GraphManager {
 
 	private static GraphManager graphManager;
@@ -19,6 +22,12 @@ public class GraphManager {
 		this.graphParser = graphParser;
 	}
 
+    /**
+     * Gets the configured {@link GraphManager} from files specified by system properties :
+     * {@systemProperty graphParseConfig.properties} and {@systemProperty graphOutputConfig.properties}
+     *
+     * @return {@link GraphManager} with configured {@link GraphParser} and {@link GraphOutput}
+     * */
 	public static GraphManager getConfiguredLoader() {
 		if(graphManager == null) {
 			try {
@@ -33,6 +42,12 @@ public class GraphManager {
 	}
  
 
+    /**
+     * This method can be used to get {@link GraphManager} with details of {@link GraphParser} specified by {@link GraphSourceConfig} and details of {@link GraphOutput} specified by {@link GraphOutputConfig} .
+     * @param graphSourceConfig {@link GraphSourceConfig} representating configurations of {@link GraphParser}
+     * @param graphOutputConfig {@link GraphOutputConfig} representating configurations of {@link GraphOutput}
+     * @return {@link GraphManager} with configured {@link GraphParser} and {@link GraphOutput}
+     * */
     public static GraphManager getConfiguredLoader(GraphSourceConfig graphSourceConfig, GraphOutputConfig graphOutputConfig) {
 		if(graphManager == null) {
 			try {
@@ -88,10 +103,16 @@ public class GraphManager {
         return getConfiguredGraphParser(graphSourceConfig);
 	}
 
+    /**
+     * @return  {@link GraphOutput} representated by this {@link GraphManager}
+     * */
     public GraphOutput getGraphOutput() {
         return graphOutput;
     }
 
+    /**
+     * @return  {@link GraphParser} representated by this {@link GraphManager}
+     * */
     public GraphParser getGraphParser() {
         return graphParser;
     }
